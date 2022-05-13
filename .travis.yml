@@ -2,9 +2,8 @@ language: bash
 os: linux-ppc64le
 service: docker
 script:
-  - uname -m
-  - wget https://github.com/redhat-openshift-ecosystem/openshift-preflight/releases/download/1.2.0/preflight-linux-ppc64le
-  - chmod u+x preflight-linux-ppc64le
+  - wget https://github.com/redhat-openshift-ecosystem/openshift-preflight/releases/download/1.2.0/preflight-linux-"$arch"
+  - chmod u+x preflight-linux-"$arch"
   - sudo mv preflight-linux-ppc64le /usr/local/bin/preflight
   - preflight --version
   - preflight check container "$IMAGE_REGISTRY"/"$IMAGE_NAMESPACE"/"$IMAGE_NAME":"$IMAGE_TAG"
